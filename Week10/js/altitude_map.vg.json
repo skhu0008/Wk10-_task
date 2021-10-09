@@ -1,0 +1,81 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1000,
+    "height": 600,
+    "title": "Location and Height of the 8000ers",    
+    "projection": {
+          "type": "equirectangular",
+          "center": { "expr": "center_to" },
+          "scale": { "expr": "zoom_level" }
+      },
+      "params": [
+        {
+        "name": "size",
+        "value": 150
+      },
+          {
+              "name": "zoom_level",
+              "value": 1750,
+              "bind": {
+                  "input": "range",
+                  "min": 500,
+                  "max": 200000,
+                  "step": 100,
+                  "name": "Zoom: "
+              }
+          },
+          
+          {
+              "name": "center_to",
+              "value": [86.926, 27.988],
+              "bind": {
+                  "input": "select",
+                  "options": [
+                      [86.926, 27.988],
+                      [76.513, 35.881],
+                      [88.148, 27.703],
+                      [86.933, 27.962],
+                      [87.088, 27.89],
+                      [86.661, 28.094],
+                      [83.494, 28.697],
+                      [84.568, 28.55],
+                      [74.59, 35.238],
+                      [83.821, 28.596],
+                      [76.697, 35.724],
+                      [76.568, 35.811],
+                      [76.654, 35.758],
+                      [85.779, 28.353]
+                  ],
+                  "labels": ["Everest", "K2", "Kangchenjuga", "Lhotse", "Makalu", "Cho Oyu", "Dhaulagiri I", "Manaslu", "Nanga Parbat", "Annapurna I", "Gasherbrum I", "Broad Peak", "Gasherbrum II", "Shishapangma"],
+                  "name": "Mountain: "
+              }
+          }
+      ],
+  
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/skhu0008/Assignment2/main/data/nep%20ind.json",
+          "format": {"feature": "ne_10m_admin_0_countries"}
+        },
+        "mark": {"type": "geoshape", "fill": "beige", "stroke": "black"}
+      },
+      
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/skhu0008/Assignment2/main/data/peaks_data.csv"
+        },
+        "mark": {
+        "type":"square", 
+        "size": {"expr": "size"},
+        "shape": {"expr": "shape"},
+        "color":"darkblue",
+        "tooltip": {"content": "data"}},
+              "encoding": {
+          "latitude": {"field": "latitude"},
+          "longitude": {"field": "longitude"},
+          "color": {"condition": {"param": "center_to", "field": "Height", "type": "quantitative"}, "value": "grey"}
+          }
+        }
+    ]
+  }
