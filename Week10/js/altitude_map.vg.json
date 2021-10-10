@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 1000,
-    "height": 500,
+    "width": "container",
+    "height": "container",
     "title": "Location and Height of the 8000ers",    
     "projection": {
           "type": "equirectangular",
