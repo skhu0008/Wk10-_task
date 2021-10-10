@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Climbers of all 14 Eight-Thousanders",
     "width": "container",
-    "height": "container",
+    "height": 400,
     "data": {
       "url": "https://raw.githubusercontent.com/skhu0008/week-9/main/world.json",
       "format": {"type": "topojson", "feature": "world"}
