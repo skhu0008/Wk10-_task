@@ -1,0 +1,31 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "data": {"url": "https://raw.githubusercontent.com/skhu0008/Assignment2/main/data/peaks_data.csv"},
+    "encoding": {
+      "y": {
+        "field": "Mountain",
+        "type": "nominal",
+        "axis": null
+      }
+    },
+    "layer": [{
+      "title": "Expedition costs of the Eight-Thousanders",
+      "mark": {"type": "bar", "color": "#5784ff44"},
+      "encoding": {
+        "x": {
+          "aggregate": "max",
+          "field": "Approximate_Costs ($USD)",
+          "scale": {"domain": [5000, 50000]},
+          "title": "Expedition Costs ($USD)"
+        }
+      }
+    }, {
+      "mark": {"type": "text", "align": "left", "x": 5},
+      "encoding": {
+        "text": {"field": "Mountain"},
+        "detail": {"aggregate": "count"}
+      }
+    }]
+  }
+  
